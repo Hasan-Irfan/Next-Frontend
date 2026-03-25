@@ -1,0 +1,44 @@
+"use client";
+
+import { useState } from "react";
+import { registerUser } from "../../src/services/auth";
+
+export default function Register() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleSubmit = async () => {
+    const res = await registerUser({ email, password });
+    alert(res.message || res.error);
+  };
+
+  return (
+    <div className="min-h-screen flex items-center justify-center bg-[var(--background)]">
+      <div className="w-full max-w-md p-6 rounded-2xl shadow-lg bg-white">
+        <h1 className="text-2xl font-bold mb-6 text-center text-black">
+          Register
+        </h1>
+
+        <input
+          className="w-full p-3 mb-4 border rounded-lg text-black"
+          placeholder="Email"
+          onChange={(e) => setEmail(e.target.value)}
+        />
+
+        <input
+          className="w-full p-3 mb-4 border rounded-lg text-black"
+          type="password"
+          placeholder="Password"
+          onChange={(e) => setPassword(e.target.value)}
+        />
+
+        <button
+          onClick={handleSubmit}
+          className="w-full bg-black text-white p-3 rounded-lg hover:opacity-80 transition"
+        >
+          Register
+        </button>
+      </div>
+    </div>
+  );
+}

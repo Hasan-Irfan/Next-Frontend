@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #fffff7; /* cream color */
+  --foreground: #000000; /* black text */
 }
 
 @theme inline {
@@ -12,10 +12,11 @@
   --font-mono: var(--font-geist-mono);
 }
 
+/* Optional: keep same colors even in dark mode */
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #fffff7;
+    --foreground: #000000;
   }
 }
 
