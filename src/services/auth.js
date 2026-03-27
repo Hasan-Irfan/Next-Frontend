@@ -19,7 +19,15 @@ export const loginUser = async (data) => {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(data),
+    credentials: "include", 
   });
 
   return res.json();
+};
+
+export const logoutUser = async () => {
+  await fetch("http://localhost:8080/api/logout", {
+    method: "POST",
+    credentials: "include", // 🔥 important
+  });
 };

@@ -13,11 +13,10 @@ export default function Login() {
   const handleSubmit = async () => {
     const res = await loginUser({ email, password });
 
-    if (res.token) {
-      localStorage.setItem("token", res.token);
+    if (res.message === "Login successful") {
       router.push("/");
     } else {
-      alert(res.error);
+      alert("Login failed: " + res.message);
     }
   };
 
