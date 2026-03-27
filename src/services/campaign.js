@@ -1,5 +1,7 @@
+const API = process.env.NEXT_PUBLIC_API_URL;
+
 export const getCampaigns = async () => {
-  const res = await fetch("http://localhost:8080/api/campaigns", {
+  const res = await fetch(`${API}/campaigns`, {
     cache: "no-store",
     credentials: "include", 
   });
