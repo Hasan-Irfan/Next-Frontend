@@ -38,7 +38,11 @@ export default function Register() {
         >
           Register
         </button>
+        <a href="/login" className="block mt-4 text-center text-sm text-gray-600 hover:underline">
+          Already have an account? Login
+        </a>
       </div>
+
     </div>
   );
 }

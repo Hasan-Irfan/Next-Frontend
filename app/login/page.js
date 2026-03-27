@@ -16,7 +16,7 @@ export default function Login() {
     if (res.message === "Login successful") {
       router.push("/");
     } else {
-      alert("Login failed: " + res.message);
+      alert("Login failed ");
     }
   };
 
@@ -46,6 +46,9 @@ export default function Login() {
         >
           Login
         </button>
+        <a href="/register" className="block mt-4 text-center text-sm text-gray-600 hover:underline">
+          Don't have an account? Register
+        </a>
       </div>
     </div>
   );
