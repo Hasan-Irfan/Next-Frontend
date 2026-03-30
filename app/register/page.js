@@ -7,10 +7,38 @@ export default function Register() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleSubmit = async () => {
-    const res = await registerUser({ email, password });
-    alert(res.message || res.error);
+  // const handleSubmit = async () => {
+  //   const res = await registerUser({ email, password });
+  //   alert(res.message || res.error);
+  // };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault(); // 🔥 important if inside form
+
+    console.log("REGISTER CLICKED"); // debug
+
+    if (!email || !password) {
+      alert("Please enter email and password");
+      return;
+    }
+
+    try {
+      const res = await registerUser({ email, password });
+
+      console.log("API RESPONSE:", res);
+
+      if (res.error) {
+        alert(res.error);
+      } else {
+        alert(res.message || "Registered successfully");
+      }
+
+    } catch (err) {
+      console.error("ERROR:", err);
+      alert("Something went wrong");
+    }
   };
+
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-[var(--background)]">
