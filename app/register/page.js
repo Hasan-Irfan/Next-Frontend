@@ -7,15 +7,10 @@ export default function Register() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  // const handleSubmit = async () => {
-  //   const res = await registerUser({ email, password });
-  //   alert(res.message || res.error);
-  // };
-
   const handleSubmit = async (e) => {
-    e.preventDefault(); // 🔥 important if inside form
+    e.preventDefault();
 
-    console.log("REGISTER CLICKED"); // debug
+    console.log("REGISTER CLICKED");
 
     if (!email || !password) {
       alert("Please enter email and password");
@@ -32,13 +27,11 @@ export default function Register() {
       } else {
         alert(res.message || "Registered successfully");
       }
-
     } catch (err) {
       console.error("ERROR:", err);
       alert("Something went wrong");
     }
   };
-
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-[var(--background)]">
@@ -47,30 +40,39 @@ export default function Register() {
           Register
         </h1>
 
-        <input
-          className="w-full p-3 mb-4 border rounded-lg text-black"
-          placeholder="Email"
-          onChange={(e) => setEmail(e.target.value)}
-        />
+        {/* ✅ FORM START */}
+        <form onSubmit={handleSubmit}>
+          <input
+            className="w-full p-3 mb-4 border rounded-lg text-black"
+            placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
 
-        <input
-          className="w-full p-3 mb-4 border rounded-lg text-black"
-          type="password"
-          placeholder="Password"
-          onChange={(e) => setPassword(e.target.value)}
-        />
+          <input
+            className="w-full p-3 mb-4 border rounded-lg text-black"
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
 
-        <button
-          onClick={handleSubmit}
-          className="w-full bg-black text-white p-3 rounded-lg hover:opacity-80 transition"
+          <button
+            type="submit"
+            className="w-full bg-black text-white p-3 rounded-lg hover:opacity-80 transition"
+          >
+            Register
+          </button>
+        </form>
+        {/* ✅ FORM END */}
+
+        <a
+          href="/login"
+          className="block mt-4 text-center text-sm text-gray-600 hover:underline"
         >
-          Register
-        </button>
-        <a href="/login" className="block mt-4 text-center text-sm text-gray-600 hover:underline">
           Already have an account? Login
         </a>
       </div>
-
     </div>
   );
 }

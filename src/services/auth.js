@@ -1,4 +1,6 @@
 const API = process.env.NEXT_PUBLIC_API_URL;
+console.log("API:", process.env.NEXT_PUBLIC_API_URL);
+
 
 export const registerUser = async (data) => {
   const res = await fetch(`${API}/register`, {
