@@ -7,10 +7,10 @@ export default function Register() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  console.log("COMPONENT RENDERED"); // ✅ debug
 
-    console.log("REGISTER CLICKED");
+  const handleSubmit = async () => {
+    console.log("REGISTER CLICKED"); // ✅ debug
 
     if (!email || !password) {
       alert("Please enter email and password");
@@ -40,8 +40,8 @@ export default function Register() {
           Register
         </h1>
 
-        {/* ✅ FORM START */}
-        <form onSubmit={handleSubmit}>
+        {/* ❗ NO FORM (prevents auto reload issues) */}
+        <div>
           <input
             className="w-full p-3 mb-4 border rounded-lg text-black"
             placeholder="Email"
@@ -58,13 +58,13 @@ export default function Register() {
           />
 
           <button
-            type="submit"
+            type="button" // 🔥 VERY IMPORTANT
+            onClick={handleSubmit}
             className="w-full bg-black text-white p-3 rounded-lg hover:opacity-80 transition"
           >
             Register
           </button>
-        </form>
-        {/* ✅ FORM END */}
+        </div>
 
         <a
           href="/login"
